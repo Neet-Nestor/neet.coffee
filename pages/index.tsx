@@ -1,10 +1,11 @@
 import type { NextPage } from "next"
 import Head from "next/head"
+import Bio from "./Bio"
 import NavigationBar from "./NavigationBar"
 
 const Home: NextPage = () => {
   return (
-    <div className="min-h-screen w-100 bg-blue-500">
+    <div>
       <Head>
         <title>Neet.coffee</title>
         <meta
@@ -18,8 +19,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavigationBar />
-      <div>Hello world!</div>
+      <main className="min-h-screen w-100 bg-blue-500 relative">
+        <div id="page_container" className="min-w-full min-h-full m-0 bg-white">
+          <NavigationBar />
+          <Bio />
+        </div>
+      </main>
     </div>
   )
 }
