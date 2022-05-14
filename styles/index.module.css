@@ -1,0 +1,6 @@
+.main {
+    background-color: #5974ff;
+    opacity: 0.8;
+    background-image: radial-gradient(#dadcfc 0.65px, #5974ff 0.65px);
+    background-size: 13px 13px;
+}

@@ -2,6 +2,7 @@ import type { NextPage } from "next"
 import Head from "next/head"
 import Bio from "./Bio"
 import NavigationBar from "./NavigationBar"
+import styles from "../styles/index.module.css"
 
 const Home: NextPage = () => {
   return (
@@ -19,8 +20,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen w-100 bg-blue-500 relative">
-        <div id="page_container" className="min-w-full min-h-full m-0 bg-white">
+      <main className={`${styles.main} min-h-screen relative lg:p-10`}>
+        <div
+          id="page-container"
+          className="relative min-w-full overflow-hidden bg-white lg:min-w-min lg:min-h-[80%] lg:max-w-[94%] lg:mx-auto lg:rounded-3xl"
+        >
           <NavigationBar />
           <Bio />
         </div>
