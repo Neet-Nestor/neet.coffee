@@ -20,7 +20,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen relative lg:p-10">
+      <main className="relative lg:min-h-screen lg:p-10">
         <div className={`${styles.background}`}></div>
         <div
           id="page-container"

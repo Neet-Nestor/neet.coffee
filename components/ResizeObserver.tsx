@@ -1,8 +1,8 @@
 import React, { ReactNode, useCallback, useEffect, useState } from "react"
 
 export const WindowInnerSizeContext = React.createContext({
-  width: 0,
-  height: 0,
+  innerWidth: 0,
+  innerHeight: 0,
 })
 
 interface Props {
@@ -27,9 +27,7 @@ const ResizeObserver: React.FC<Props> = ({ children }) => {
   }, [handleResize])
 
   return (
-    <WindowInnerSizeContext.Provider
-      value={{ width: innerWidth, height: innerHeight }}
-    >
+    <WindowInnerSizeContext.Provider value={{ innerWidth, innerHeight }}>
       {children}
     </WindowInnerSizeContext.Provider>
   )

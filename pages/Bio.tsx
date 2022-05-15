@@ -30,17 +30,28 @@ const Arrow: React.FC = () => (
 
 const Bio: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false)
-  const { height } = useContext(WindowInnerSizeContext)
+  const { innerHeight, innerWidth } = useContext(WindowInnerSizeContext)
+  const [containerHeight, setContainerHeight] = useState(0)
 
   useEffect(() => {
     setIsLoaded(true)
+  }, [])
+
+  useEffect(() => {
+    // This is to fix the tab bar overlapping with `100vh` on mobile browsers
+    setContainerHeight(window.innerHeight)
   }, [])
 
   return (
     <div
       id={styles.bio}
       className="pt-11 min-w-[240px] relative flex justify-center items-center bg-white mx-10 lg:min-h-max lg:h-auto"
-      style={{ height }}
+      style={{
+        minHeight:
+          innerWidth >= 1024
+            ? "0"
+            : `calc(${containerHeight}px - env(safe-area-inset-bottom, 0px))`,
+      }}
     >
       <div className="py-10 lg:py-20 flex flex-col justify-center -mt-10 grow md:flex-row items-center md:gap-10">
         <div
@@ -86,7 +97,7 @@ const Bio: React.FC = () => {
             styles.arrow
           } absolute bottom-6 sm:bottom-8 w-14 h-10 lg:hidden transition-transform ease-out duration-1000 ${
             isLoaded ? "opacity-100" : "opacity-0 -translate-y-8"
-          }`}
+          } ${innerHeight < 600 ? "hidden" : "block"}`}
         >
           <Arrow />
         </div>
