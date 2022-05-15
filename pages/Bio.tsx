@@ -53,7 +53,7 @@ const Bio: React.FC = () => {
             : `calc(${containerHeight}px - env(safe-area-inset-bottom, 0px))`,
       }}
     >
-      <div className="py-10 lg:py-20 flex flex-col justify-center -mt-10 grow md:flex-row items-center md:gap-10">
+      <div className="py-10 lg:py-20 flex flex-col justify-center -mt-10 -translate-y-5 grow items-center md:flex-row md:gap-14 lg:translate-y-0">
         <div
           className={`${styles.container} relative opacity-90 my-6 mx-auto min-w-min w-[80%] max-w-xs flex aspect-square md:max-w-xs md:flex-none md:mx-0`}
         >
@@ -92,15 +92,15 @@ const Bio: React.FC = () => {
             Or... Just call me <strong>Neet</strong>, casually
           </p>
         </div>
-        <div
-          className={`${
-            styles.arrow
-          } absolute bottom-6 sm:bottom-8 w-14 h-10 lg:hidden transition-transform ease-out duration-1000 ${
-            isLoaded ? "opacity-100" : "opacity-0 -translate-y-8"
-          } ${innerHeight < 600 ? "hidden" : "block"}`}
-        >
-          <Arrow />
-        </div>
+      </div>
+      <div
+        className={`${
+          styles.arrow
+        } absolute bottom-6 sm:bottom-8 w-14 h-10 lg:hidden transition-transform ease-out duration-1000 ${
+          isLoaded ? "opacity-100" : "opacity-0 -translate-y-8"
+        } ${innerHeight < 600 ? "hidden" : "block"}`}
+      >
+        <Arrow />
       </div>
     </div>
   )
