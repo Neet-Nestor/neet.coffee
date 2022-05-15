@@ -1,13 +1,19 @@
 import Image from "next/image"
 import Link from "next/link"
-import React from "react"
+import React, { useState } from "react"
 
 const NavigationBar: React.FC = () => {
+  const [isLoaded, setLoaded] = useState(false)
+
   return (
     <header className="bg-white px-4 pt-1 pb-2 z-50 w-100 shadow-md absolute left-0 right-0 top-0">
       <div className="flex justify-center">
         <Link href="/">
-          <a>
+          <a
+            className={`transition-all duration-1000 ${
+              isLoaded ? "opacity-100" : "opacity-0 -translate-y-8"
+            }`}
+          >
             <div className="flex items-end gap-1 align-bottom">
               <span className="font-bold text-2xl leading-none">Neet</span>
               <span className="text-md leading-none">dot</span>
@@ -18,6 +24,10 @@ const NavigationBar: React.FC = () => {
                   layout="fill"
                   height={40}
                   width={40}
+                  loading="eager"
+                  onLoadingComplete={() => {
+                    setLoaded(true)
+                  }}
                 />
               </div>
             </div>

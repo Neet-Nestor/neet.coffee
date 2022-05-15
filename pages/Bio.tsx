@@ -7,7 +7,7 @@ interface BioAvatarProps {
 
 const BioAvatar: React.FC<BioAvatarProps> = ({ imageName }) => {
   return (
-    <div className="relative my-6 mx-auto w-[80%] max-w-xs aspect-square border-[18px] border-white rounded-full overflow-clip shadow-[0_0_25px_0_rgba(0,0,0,0.1)] md:max-w-xs md:flex-none">
+    <div className="relative my-6 mx-auto w-[80%] max-w-xs aspect-square border-[18px] border-white rounded-full overflow-clip shadow-[0_0_25px_0_rgba(0,0,0,0.1)] md:max-w-xs md:flex-none md:mx-0">
       <Image
         src={`/images/${imageName}`}
         alt="Avatar"
@@ -21,15 +21,15 @@ const BioAvatar: React.FC<BioAvatarProps> = ({ imageName }) => {
 
 const Bio: React.FC = () => {
   return (
-    <div className="pt-11 min-h-screen bg-white relative mx-10 lg:min-h-max">
-      <div className="py-10 md:flex md:gap-10">
+    <div className="pt-11 min-h-screen relative flex justify-center items-center bg-white mx-10 lg:min-h-max">
+      <div className="py-10 flex flex-col justify-center md:flex-row grow items-center md:gap-10">
         <BioAvatar imageName="avatar.jpeg" />
-        <div className="text-3xl text-center md:text-3xl md:flex-grow md:text-left md:flex md:flex-col md:justify-center">
-          <p>
+        <div className="text-left inline-block leading-loose md:text-left md:flex md:flex-col md:justify-center">
+          <p className="text-3xl">
             Hi, I&apos;m <strong>Nestor Qin</strong>
           </p>
-          <p>
-            Or, you can call me <strong>Neet</strong>
+          <p className="text-md text-gray-700">
+            Or... Just call me <strong>Neet</strong>, casually
           </p>
         </div>
       </div>
