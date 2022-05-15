@@ -20,7 +20,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={`${styles.main} min-h-screen relative lg:p-10`}>
+      <main className="min-h-screen relative lg:p-10">
+        <div className={`${styles.background}`}></div>
         <div
           id="page-container"
           className="relative min-w-full overflow-hidden bg-white lg:min-w-min lg:min-h-[80%] lg:max-w-[94%] lg:mx-auto lg:rounded-3xl"

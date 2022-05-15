@@ -17,6 +17,7 @@ const Bio: React.FC = () => {
               alt="Avatar"
               width="100%"
               layout="fill"
+              objectFit="cover"
               className="rounded-full static" /* this is required for Safari to not overflow */
             />
           </div>
@@ -28,7 +29,9 @@ const Bio: React.FC = () => {
               alt="Avatar"
               width="100%"
               layout="fill"
+              objectFit="cover"
               className="rounded-full static" /* this is required for Safari to not overflow */
+              unoptimized
             />
           </div>
         </div>
