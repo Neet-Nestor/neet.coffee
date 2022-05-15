@@ -7,7 +7,7 @@ const Bio: React.FC = () => {
     <div className="pt-11 min-h-screen min-w-[240px] relative flex justify-center items-center bg-white mx-10 lg:min-h-max">
       <div className="py-10 flex flex-col justify-center -mt-10 grow md:flex-row items-center md:gap-10">
         <div
-          className={`${styles.container} relative my-6 mx-auto min-w-min w-[80%] max-w-xs flex aspect-square md:max-w-xs md:flex-none md:mx-0`}
+          className={`${styles.container} relative opacity-90 my-6 mx-auto min-w-min w-[80%] max-w-xs flex aspect-square md:max-w-xs md:flex-none md:mx-0`}
         >
           <div
             className={`${styles.photo} ${styles.behind} absolute w-full h-full border-[18px] border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.1)]`}
@@ -31,7 +31,6 @@ const Bio: React.FC = () => {
               layout="fill"
               objectFit="cover"
               className="rounded-full static" /* this is required for Safari to not overflow */
-              unoptimized
             />
           </div>
         </div>
