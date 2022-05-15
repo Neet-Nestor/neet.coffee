@@ -13,7 +13,7 @@ const Bio: React.FC = () => {
             className={`${styles.photo} ${styles.behind} absolute w-full h-full border-[18px] border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.1)]`}
           >
             <Image
-              src="/images/pins-photo.JPG"
+              src="/images/pins-photo.jpg"
               alt="Avatar"
               width="100%"
               layout="fill"
