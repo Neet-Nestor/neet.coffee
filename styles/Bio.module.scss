@@ -1,0 +1,36 @@
+.container {
+  &:hover .photo.behind {
+    animation-play-state: paused;
+  }
+}
+
+.photo {
+  transition: all 0.2s;
+
+  &:hover {
+    opacity: 0;
+  }
+
+  &.behind {
+    transform-origin: top left;
+    animation: rotate-out 4s ease-in-out infinite;
+  }
+}
+
+@keyframes rotate-out {
+  from {
+    transform: rotate(0);
+  }
+
+  30% {
+    transform: rotate(-10deg);
+  }
+
+  60% {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
