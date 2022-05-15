@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
-import coffee from "../assets/coffee.png"
 
 const NavigationBar: React.FC = () => {
   return (
@@ -14,7 +13,7 @@ const NavigationBar: React.FC = () => {
               <span className="text-md leading-none">dot</span>
               <div className="relative h-8 w-8">
                 <Image
-                  src={coffee}
+                  src="/images/coffee.png"
                   alt="Coffee logo"
                   layout="fill"
                   height={40}
