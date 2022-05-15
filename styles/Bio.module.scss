@@ -1,3 +1,11 @@
+#bio {
+  height: 100%; /* Fallback */
+  height: -moz-available;
+  height: -webkit-fill-available;
+  height: fill-available;
+  height: stretch; /* Latest specification */
+}
+
 .container {
   &:hover .photo.behind {
     animation-play-state: paused;

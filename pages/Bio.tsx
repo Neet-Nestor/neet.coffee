@@ -1,5 +1,6 @@
 import Image from "next/image"
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
+import { WindowInnerSizeContext } from "../components/ResizeObserver"
 import styles from "../styles/Bio.module.scss"
 
 const Arrow: React.FC = () => (
@@ -29,13 +30,18 @@ const Arrow: React.FC = () => (
 
 const Bio: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false)
+  const { height } = useContext(WindowInnerSizeContext)
 
   useEffect(() => {
     setIsLoaded(true)
   }, [])
 
   return (
-    <div className="pt-11 min-h-screen min-w-[240px] relative flex justify-center items-center bg-white mx-10 lg:min-h-max">
+    <div
+      id={styles.bio}
+      className="pt-11 min-w-[240px] relative flex justify-center items-center bg-white mx-10 lg:min-h-max lg:h-auto"
+      style={{ height }}
+    >
       <div className="py-10 lg:py-20 flex flex-col justify-center -mt-10 grow md:flex-row items-center md:gap-10">
         <div
           className={`${styles.container} relative opacity-90 my-6 mx-auto min-w-min w-[80%] max-w-xs flex aspect-square md:max-w-xs md:flex-none md:mx-0`}
