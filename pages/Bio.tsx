@@ -64,7 +64,6 @@ const Bio: React.FC = () => {
             <Image
               src="/images/pins-photo.jpg"
               alt="Avatar"
-              width="100%"
               layout="fill"
               objectFit="cover"
               className="rounded-full static" /* this is required for Safari to not overflow */
@@ -77,7 +76,6 @@ const Bio: React.FC = () => {
             <Image
               src="/images/avatar.jpeg"
               alt="Avatar"
-              width="100%"
               layout="fill"
               objectFit="cover"
               className="rounded-full static" /* this is required for Safari to not overflow */

@@ -22,8 +22,6 @@ const NavigationBar: React.FC = () => {
                   src="/images/coffee.png"
                   alt="Coffee logo"
                   layout="fill"
-                  height={40}
-                  width={40}
                   loading="eager"
                   onLoadingComplete={() => {
                     setIconLoaded(true)
