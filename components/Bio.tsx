@@ -1,6 +1,6 @@
 import Image from "next/image"
 import React, { useContext, useEffect, useState } from "react"
-import { WindowInnerSizeContext } from "../components/ResizeObserver"
+import { WindowInnerSizeContext } from "./ResizeObserver"
 import styles from "../styles/Bio.module.scss"
 
 const Arrow: React.FC = () => (

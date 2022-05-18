@@ -1,8 +1,8 @@
 import type { NextPage } from "next"
 import Head from "next/head"
 import Script from "next/script"
-import Bio from "./Bio"
-import NavigationBar from "./NavigationBar"
+import Bio from "../components/Bio"
+import NavigationBar from "../components/NavigationBar"
 import styles from "../styles/index.module.css"
 
 const Home: NextPage = () => {
