@@ -51,7 +51,8 @@ const FizzyButton: React.FC<{
   icon: JSX.Element
   onClick?: () => void
   href?: string
-}> = ({ icon, onClick, href }) => {
+}> = (props) => {
+  const { icon, onClick, href, ...otherProps } = props
   return (
     <a
       href={href}
@@ -63,7 +64,9 @@ const FizzyButton: React.FC<{
           onClick()
         }
       }}
+      role="button"
       className={`${styles.fizzy_button} border-2 rounded text-base flex flex-row text-slate-600 border-slate-600 px-4 py-2`}
+      {...otherProps}
     >
       {icon}
       <span className={styles.text}>Resume</span>
@@ -147,6 +150,7 @@ const Bio: React.FC = () => {
             <FizzyButton
               icon={<DownloadIcon />}
               href="https://www.dropbox.com/s/mtd321t9598x8px/Neet_Resume_FullStack_2022.pdf?dl=0"
+              aria-label="Download Resume"
             />
           </div>
         </div>
