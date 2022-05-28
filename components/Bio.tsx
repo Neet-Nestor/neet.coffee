@@ -28,6 +28,50 @@ const Arrow: React.FC = () => (
   </svg>
 )
 
+const DownloadIcon: React.FC = () => (
+  <i className={styles.icon}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+      />
+    </svg>
+  </i>
+)
+
+const FizzyButton: React.FC<{ icon: JSX.Element; onClick: () => void }> = ({
+  icon,
+  onClick,
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`${styles.fizzy_button} border-2 rounded text-base flex flex-row gap-1 text-slate-600 border-slate-600 px-4 py-2`}
+    >
+      {icon}
+      <span className={styles.text}>Resume</span>
+      <span>
+        <i className={`${styles.tick}`}></i>
+      </span>
+      <div className={styles.spots_container}>
+        {Array(52)
+          .fill(null)
+          .map((_, i) => (
+            <div className={styles.spot} key={`spot_${i}`} />
+          ))}
+      </div>
+    </button>
+  )
+}
+
 const Bio: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const { innerHeight, innerWidth } = useContext(WindowInnerSizeContext)
@@ -82,13 +126,26 @@ const Bio: React.FC = () => {
             />
           </div>
         </div>
-        <div className="text-left inline-block leading-loose md:text-left md:flex md:flex-col md:justify-center">
+        <div className="text-left leading-loose flex flex-col items-center md:inline-block">
           <p className="text-3xl">
             Hi, I&apos;m <strong>Nestor Qin</strong>
           </p>
           <p className="text-md text-gray-700">
             Or... Just call me <strong>Neet</strong>, casually
           </p>
+
+          <div className="flex flex-row mt-4">
+            <FizzyButton
+              icon={<DownloadIcon />}
+              onClick={() => {
+                window.open(
+                  "https://www.dropbox.com/s/mtd321t9598x8px/Neet_Resume_FullStack_2022.pdf?dl=0",
+                  "_blank",
+                  "noopener,noreferrer",
+                )
+              }}
+            />
+          </div>
         </div>
       </div>
       {/* <div
