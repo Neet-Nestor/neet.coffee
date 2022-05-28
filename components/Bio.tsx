@@ -47,14 +47,23 @@ const DownloadIcon: React.FC = () => (
   </i>
 )
 
-const FizzyButton: React.FC<{ icon: JSX.Element; onClick: () => void }> = ({
-  icon,
-  onClick,
-}) => {
+const FizzyButton: React.FC<{
+  icon: JSX.Element
+  onClick?: () => void
+  href?: string
+}> = ({ icon, onClick, href }) => {
   return (
-    <button
-      onClick={onClick}
-      className={`${styles.fizzy_button} border-2 rounded text-base flex flex-row gap-1 text-slate-600 border-slate-600 px-4 py-2`}
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      onClick={(e) => {
+        if (onClick) {
+          e.preventDefault()
+          onClick()
+        }
+      }}
+      className={`${styles.fizzy_button} border-2 rounded text-base flex flex-row text-slate-600 border-slate-600 px-4 py-2`}
     >
       {icon}
       <span className={styles.text}>Resume</span>
@@ -68,7 +77,7 @@ const FizzyButton: React.FC<{ icon: JSX.Element; onClick: () => void }> = ({
             <div className={styles.spot} key={`spot_${i}`} />
           ))}
       </div>
-    </button>
+    </a>
   )
 }
 
@@ -137,13 +146,7 @@ const Bio: React.FC = () => {
           <div className="flex flex-row mt-4">
             <FizzyButton
               icon={<DownloadIcon />}
-              onClick={() => {
-                window.open(
-                  "https://www.dropbox.com/s/mtd321t9598x8px/Neet_Resume_FullStack_2022.pdf?dl=0",
-                  "_blank",
-                  "noopener,noreferrer",
-                )
-              }}
+              href="https://www.dropbox.com/s/mtd321t9598x8px/Neet_Resume_FullStack_2022.pdf?dl=0"
             />
           </div>
         </div>
