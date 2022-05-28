@@ -57,16 +57,12 @@
 
   .icon {
     position: relative;
-    opacity: 0;
-    top: 12px;
     transition: top .3s .1s, opacity .3s .1s;
   }
 
   span.text {
     display: inline-block;
     position: relative;
-    opacity: 1;
-    left: -12px;
     transition: left .4s .1s;
     margin-left: 4px;
   }
@@ -125,15 +121,6 @@
   &:hover {
     color: white;
     background: rgb(71 85 105 / var(--tw-border-opacity));
-
-    .icon {
-      opacity: 1;
-      top: 0;
-    }
-
-    span.text {
-      left: 0;
-    }
 
     .spot {
       @for $i from 1 through 19 {
