@@ -149,7 +149,7 @@ const Bio: React.FC = () => {
           <div className="flex flex-row mt-4">
             <FizzyButton
               icon={<DownloadIcon />}
-              href="https://www.dropbox.com/s/mtd321t9598x8px/Neet_Resume_FullStack_2022.pdf?dl=0"
+              href="https://www.dropbox.com/s/pdcgzxagbd7hfbr/Nestor%20Resume%202022%20Nov.pdf?dl=0"
               aria-label="Download Resume"
             />
           </div>
