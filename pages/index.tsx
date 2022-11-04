@@ -3,6 +3,7 @@ import Head from "next/head"
 import Script from "next/script"
 import Bio from "../components/Bio"
 import NavigationBar from "../components/NavigationBar"
+import UnderConstruction from "../components/UnderConstruction"
 import styles from "../styles/index.module.css"
 
 const Home: NextPage = () => {
@@ -29,6 +30,7 @@ const Home: NextPage = () => {
         >
           <NavigationBar />
           <Bio />
+          <UnderConstruction />
         </div>
       </main>
 

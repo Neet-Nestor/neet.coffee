@@ -155,7 +155,7 @@ const Bio: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* <div
+      <div
         className={`${
           styles.arrow
         } absolute bottom-6 sm:bottom-8 w-14 h-10 lg:hidden transition-transform ease-out duration-1000 ${
@@ -163,7 +163,7 @@ const Bio: React.FC = () => {
         } ${innerHeight < 600 ? "hidden" : "block"}`}
       >
         <Arrow />
-      </div> */}
+      </div>
     </div>
   )
 }
