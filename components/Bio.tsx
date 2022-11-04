@@ -2,6 +2,7 @@ import Image from "next/image"
 import React, { useContext, useEffect, useState } from "react"
 import { WindowInnerSizeContext } from "./ResizeObserver"
 import styles from "../styles/Bio.module.scss"
+import GitHubIcon from "../public/images/github.png"
 
 const Arrow: React.FC = () => (
   <svg viewBox="0 0 70 40">
@@ -47,6 +48,29 @@ const DownloadIcon: React.FC = () => (
   </i>
 )
 
+const LinkButton: React.FC<{
+  icon: JSX.Element
+  color: string
+  text: string
+  textColor: string
+  href?: string
+}> = (props) => {
+  const { icon, href, color, text, textColor, ...otherProps } = props
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      role="button"
+      className={`border-2 rounded text-base flex flex-row text-${textColor} bg-${color} border-slate-600 px-4 py-2 w-full`}
+      {...otherProps}
+    >
+      {icon}
+      <span className={`${styles.text} ml-1`}>{text}</span>
+    </a>
+  )
+}
+
 const FizzyButton: React.FC<{
   icon: JSX.Element
   onClick?: () => void
@@ -65,7 +89,7 @@ const FizzyButton: React.FC<{
         }
       }}
       role="button"
-      className={`${styles.fizzy_button} border-2 rounded text-base flex flex-row text-slate-600 border-slate-600 px-4 py-2`}
+      className={`${styles.fizzy_button} border-2 rounded text-base flex flex-row text-slate-600 border-slate-600 px-4 py-2 w-full`}
       {...otherProps}
     >
       {icon}
@@ -146,11 +170,24 @@ const Bio: React.FC = () => {
             Or... Just call me <strong>Neet</strong>, casually
           </p>
 
-          <div className="flex flex-row mt-4">
+          <div className="flex flex-col mt-4 gap-2 w-32">
             <FizzyButton
               icon={<DownloadIcon />}
               href="https://www.dropbox.com/s/pdcgzxagbd7hfbr/Nestor%20Resume%202022%20Nov.pdf?dl=0"
               aria-label="Download Resume"
+            />
+            <LinkButton
+              icon={
+                <div
+                  className={`w-6 h-6 bg-white rounded-full ${styles.icon} relative`}
+                >
+                  <Image src={GitHubIcon} alt="GitHub" layout="fill" />
+                </div>
+              }
+              color="black"
+              text="GitHub"
+              textColor="white"
+              href="https://github.com/Neet-Nestor"
             />
           </div>
         </div>
