@@ -157,23 +157,11 @@ const Bio: React.FC = () => {
           className={`${styles.container} relative opacity-90 my-6 mx-auto min-w-min w-[80%] max-w-xs flex aspect-square md:max-w-xs md:flex-none md:mx-0`}
         >
           <div
-            className={`${styles.photo} ${styles.behind} absolute w-full h-full border-[18px] border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.1)]`}
-            aria-label="Author's photo"
+            className={`absolute w-full h-full border-[12px] border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.25)]`}
+            aria-label="photo of Nestor Qin"
           >
             <Image
-              src="/images/pins-photo.jpg"
-              alt="Avatar"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-full static" /* this is required for Safari to not overflow */
-            />
-          </div>
-          <div
-            className={`${styles.photo} absolute w-full h-full border-[18px] border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.1)]`}
-            aria-label="Avatar"
-          >
-            <Image
-              src="/images/avatar.jpeg"
+              src="/images/photo.jpg"
               alt="Avatar"
               layout="fill"
               objectFit="cover"
@@ -181,18 +169,20 @@ const Bio: React.FC = () => {
             />
           </div>
         </div>
-        <div className="text-left leading-loose flex flex-col items-center md:inline-block">
-          <p className="text-3xl">
-            Hi, I&apos;m <strong>Nestor Qin</strong>
-          </p>
-          <p className="text-md text-gray-700">
-            Or... Just call me <strong>Neet</strong>, casually
-          </p>
-
-          <div className="flex flex-col mt-4 gap-2 w-32">
+        <div className="text-left flex flex-col items-center md:inline-block">
+          <div className="flex flex-col items-center md:items-start">
+            <p className="text-3xl leading-loose">
+              Hi, I&apos;m <strong>Nestor Qin</strong>
+            </p>
+            <p className="text-md">A Versatile Full-Stack Engineer</p>
+            <p className="text-gray-500">
+              Crafting Web, Mobile, & AI Applications
+            </p>
+          </div>
+          <div className="flex flex-col mt-4 gap-2 w-32 mt-8">
             <FizzyButton
               icon={<DownloadIcon />}
-              href="https://www.dropbox.com/s/3t3beed2mo64nrs/Neet_Resume___2022_11_28.pdf?dl=0"
+              href="https://www.dropbox.com/scl/fi/gg6p5byqnfd7zngiugddp/Nestor_Qin_Resume.pdf?rlkey=cjhk0bbaagklikxtkucjsk9lh&dl=1"
               aria-label="Download Resume"
             />
             <LinkButton
