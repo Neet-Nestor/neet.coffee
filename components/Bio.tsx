@@ -128,13 +128,8 @@ const FizzyButton: React.FC<{
 }
 
 const Bio: React.FC = () => {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const { innerHeight } = useContext(WindowInnerSizeContext)
+  const { innerHeight, innerWidth } = useContext(WindowInnerSizeContext)
   const [containerHeight, setContainerHeight] = useState(0)
-
-  useEffect(() => {
-    setIsLoaded(true)
-  }, [])
 
   useEffect(() => {
     // This is to fix the tab bar overlapping with `100vh` on mobile browsers
@@ -143,8 +138,10 @@ const Bio: React.FC = () => {
 
   return (
     <section
-      id={styles.bio}
-      className="py-[44px] relative flex min-h-screen mx-10"
+      className="py-[44px] relative flex mx-10 max-h-[60rem]"
+      style={{
+        height: `calc(${containerHeight}px - env(safe-area-inset-bottom, 0px))`,
+      }}
     >
       <div className="relative w-full flex flex-col sm:my-4 justify-center grow items-center md:flex-row md:gap-14 lg:py-16">
         <div className="relative h-full max-h-48 opacity-90 my-4 min-w-min flex aspect-square sm:max-h-60 md:max-h-80 md:flex-none md:mx-0">
@@ -201,12 +198,8 @@ const Bio: React.FC = () => {
           </div>
         </div>
       </div>
-      {containerHeight > 576 && (
-        <div
-          className={`absolute w-full bottom-0 md:bottom-8 ${
-            isLoaded ? "opacity-100" : "opacity-0"
-          } ${innerHeight < 600 ? "hidden" : "block"}`}
-        >
+      {innerHeight > 576 && (
+        <div className="absolute w-full bottom-0 md:bottom-8 lg:bottom-16">
           <div className={`${styles.arrow} w-8 mx-auto sm:w-12`}>
             <Arrow />
           </div>

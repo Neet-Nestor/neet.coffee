@@ -1,12 +1,3 @@
-#bio {
-  height: 100%;
-  /* Fallback */
-  height: -moz-available;
-  height: -webkit-fill-available;
-  height: stretch;
-  /* Latest specification */
-}
-
 .arrow {
   animation: swing-down 4s ease-in-out infinite;
 }
