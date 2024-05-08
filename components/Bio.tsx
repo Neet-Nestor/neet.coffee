@@ -142,9 +142,9 @@ const Bio: React.FC = () => {
   }, [])
 
   return (
-    <div
+    <section
       id={styles.bio}
-      className="pt-11 min-w-[240px] relative flex justify-center items-center bg-white mx-10 lg:min-h-max lg:h-auto"
+      className="pt-11 relative flex justify-center items-center bg-white mx-10 lg:min-h-max lg:h-auto"
       style={{
         minHeight:
           innerWidth >= 1024
@@ -171,9 +171,9 @@ const Bio: React.FC = () => {
         </div>
         <div className="text-left flex flex-col items-center md:inline-block">
           <div className="flex flex-col items-center md:items-start">
-            <p className="text-3xl leading-loose">
+            <h1 className="text-3xl leading-loose">
               Hi, I&apos;m <strong>Nestor Qin</strong>
-            </p>
+            </h1>
             <p className="text-md">A Versatile Full-Stack Engineer</p>
             <p className="text-gray-500">
               Crafting Web, Mobile, & AI Applications
@@ -215,7 +215,7 @@ const Bio: React.FC = () => {
       >
         <Arrow />
       </div>
-    </div>
+    </section>
   )
 }
 

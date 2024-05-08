@@ -12,7 +12,7 @@ const UnderConstruction: React.FC = () => {
   }, [])
 
   return (
-    <div
+    <section
       className="flex justify-center items-center flex-col bg-yellow-100	py-12 px-8"
       style={{
         minHeight:
@@ -29,9 +29,9 @@ const UnderConstruction: React.FC = () => {
       />
       <div className="text-lg mt-10 max-w-xl text-center">
         Unfortunately, this site is still under construction due to the
-        owner&apos;s limited available time after work. Please come back later!
+        owner&apos;s limited available time after work. Please check later!
       </div>
-    </div>
+    </section>
   )
 }
 

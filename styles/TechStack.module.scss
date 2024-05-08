@@ -1,0 +1,50 @@
+.scroll_container {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 16%,
+    rgb(0, 0, 0) 84%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 16%,
+    rgb(0, 0, 0) 84%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  .scroll_list {
+    white-space: nowrap;
+    text-wrap: nowrap;
+    display: inline-flex;
+    will-change: transform;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    gap: 1rem;
+    width: fit-content;
+    animation: scrollText 60s linear infinite;
+
+    &.reverse {
+      animation-direction: reverse;
+    }
+
+    .star {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
