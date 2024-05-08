@@ -6,7 +6,7 @@ const NavigationBar: React.FC = () => {
   const [isIconLoaded, setIconLoaded] = useState(false)
 
   return (
-    <header className="bg-white px-4 pt-1 pb-2 z-50 w-100 shadow-md absolute left-0 right-0 top-0">
+    <header className="bg-white px-4 pt-1 pb-2 z-50 w-full shadow-md absolute left-0 right-0 top-0">
       <div className="flex justify-center">
         <Link
           href="/"
@@ -21,11 +21,12 @@ const NavigationBar: React.FC = () => {
               <Image
                 src="/images/coffee.png"
                 alt="Coffee logo"
-                layout="fill"
                 loading="eager"
-                onLoadingComplete={() => {
+                onLoad={() => {
                   setIconLoaded(true)
                 }}
+                fill
+                sizes="100vw"
               />
             </div>
           </div>

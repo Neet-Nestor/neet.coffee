@@ -129,7 +129,7 @@ const FizzyButton: React.FC<{
 
 const Bio: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false)
-  const { innerHeight, innerWidth } = useContext(WindowInnerSizeContext)
+  const { innerHeight } = useContext(WindowInnerSizeContext)
   const [containerHeight, setContainerHeight] = useState(0)
 
   useEffect(() => {
@@ -144,34 +144,29 @@ const Bio: React.FC = () => {
   return (
     <section
       id={styles.bio}
-      className="pt-11 relative flex justify-center items-center bg-white mx-10 lg:min-h-max lg:h-auto"
-      style={{
-        minHeight:
-          innerWidth >= 1024
-            ? "0"
-            : `calc(${containerHeight}px - env(safe-area-inset-bottom, 0px))`,
-      }}
+      className="py-[44px] relative flex min-h-screen mx-10"
     >
-      <div className="py-10 lg:py-20 flex flex-col justify-center -mt-10 -translate-y-5 grow items-center md:flex-row md:gap-14 lg:translate-y-0">
-        <div
-          className={`${styles.container} relative opacity-90 my-6 mx-auto min-w-min w-[80%] max-w-xs flex aspect-square md:max-w-xs md:flex-none md:mx-0`}
-        >
+      <div className="relative w-full flex flex-col sm:my-4 justify-center grow items-center md:flex-row md:gap-14 lg:py-16">
+        <div className="relative h-full max-h-48 opacity-90 my-4 min-w-min flex aspect-square sm:max-h-60 md:max-h-80 md:flex-none md:mx-0">
           <div
-            className={`absolute w-full h-full border-[12px] border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.25)]`}
+            className={`absolute w-full h-full border-4 sm:border-8 border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.25)]`}
             aria-label="photo of Nestor Qin"
           >
             <Image
               src="/images/photo.jpg"
               alt="Avatar"
-              layout="fill"
-              objectFit="cover"
               className="rounded-full static" /* this is required for Safari to not overflow */
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
         </div>
-        <div className="text-left flex flex-col items-center md:inline-block">
+        <div className="text-center flex flex-col items-center md:inline-block md:text-start">
           <div className="flex flex-col items-center md:items-start">
-            <h1 className="text-3xl leading-loose">
+            <h1 className="text-2xl mb-2 sm:text-3xl sm:mb-4 leading-loose">
               Hi, I&apos;m <strong>Nestor Qin</strong>
             </h1>
             <p className="text-md">A Versatile Full-Stack Engineer</p>
@@ -179,7 +174,7 @@ const Bio: React.FC = () => {
               Crafting Web, Mobile, & AI Applications
             </p>
           </div>
-          <div className="flex flex-col mt-4 gap-2 w-32 mt-8">
+          <div className="flex flex-col mt-4 gap-2 w-32">
             <FizzyButton
               icon={<DownloadIcon />}
               href="https://www.dropbox.com/scl/fi/gg6p5byqnfd7zngiugddp/Nestor_Qin_Resume.pdf?rlkey=cjhk0bbaagklikxtkucjsk9lh&dl=1"
@@ -190,7 +185,7 @@ const Bio: React.FC = () => {
                 <div
                   className={`w-6 h-6 bg-white rounded-full ${styles.icon} relative`}
                 >
-                  <Image src={GitHubIcon} alt="GitHub" layout="fill" />
+                  <Image src={GitHubIcon} alt="GitHub" fill sizes="100vw" />
                 </div>
               }
               className="bg-black text-white"
@@ -206,15 +201,17 @@ const Bio: React.FC = () => {
           </div>
         </div>
       </div>
-      <div
-        className={`${
-          styles.arrow
-        } absolute bottom-6 sm:bottom-8 w-14 h-10 lg:hidden transition-transform ease-out duration-1000 ${
-          isLoaded ? "opacity-100" : "opacity-0 -translate-y-8"
-        } ${innerHeight < 600 ? "hidden" : "block"}`}
-      >
-        <Arrow />
-      </div>
+      {containerHeight > 576 && (
+        <div
+          className={`absolute w-full bottom-0 md:bottom-8 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          } ${innerHeight < 600 ? "hidden" : "block"}`}
+        >
+          <div className={`${styles.arrow} w-8 mx-auto sm:w-12`}>
+            <Arrow />
+          </div>
+        </div>
+      )}
     </section>
   )
 }

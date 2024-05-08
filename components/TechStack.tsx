@@ -55,11 +55,9 @@ const TechStack: React.FC = () => {
   ]
 
   return (
-    <section className="flex flex-row relative m-8 p-4 flex-col gap-4 md:flex-row md:max-w-[45rem] md:mx-auto">
-      <h2 className="text-lg text-center md:grow md:text-start md:px-14 md:my-4">
-        Techstack
-      </h2>
-      <div className="max-w-full min-w-0 md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl">
+    <section className="flex relative m-8 flex-col gap-4 items-center">
+      <h2 className="text-lg text-center">Techstack</h2>
+      <div className="max-w-full min-w-0 md:max-w-lg lg:max-w-3xl">
         <div className={styles.scroll_container}>
           {techstackItems.map((items, row_idx) => (
             <ul
@@ -68,19 +66,19 @@ const TechStack: React.FC = () => {
                 row_idx % 2 == 1 ? styles.reverse : ""
               } my-4`}
             >
-              {items.map(({ key, emphasize }) => (
-                <>
+              {items.map(({ key, emphasize }, idx) => (
+                <React.Fragment key={idx}>
                   <li className={styles.star}>
                     <Star />
                   </li>
                   <li className={emphasize ? "color-black" : "text-slate-500"}>
                     <p>{key}</p>
                   </li>
-                </>
+                </React.Fragment>
               ))}
               {/* Duplicate for seamless scrolling */}
-              {items.map(({ key, emphasize }) => (
-                <>
+              {items.map(({ key, emphasize }, idx) => (
+                <React.Fragment key={idx}>
                   <li className={styles.star}>
                     <Star />
                   </li>
@@ -90,7 +88,7 @@ const TechStack: React.FC = () => {
                   >
                     <p>{key}</p>
                   </li>
-                </>
+                </React.Fragment>
               ))}
             </ul>
           ))}
