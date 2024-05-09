@@ -1,6 +1,8 @@
 import React from "react"
 import Star from "./icon/Star"
 import styles from "../styles/TechStack.module.scss"
+import CoffeeCupHigh from "./icon/CoffeeCupTall"
+import CoffeeCup from "./icon/CoffeeCup"
 
 const TechStack: React.FC = () => {
   const techstackItems = [
@@ -22,8 +24,8 @@ const TechStack: React.FC = () => {
       { key: "GraphQL", emphasize: false },
     ],
     [
-      { key: "Generative AI App", emphasize: true },
-      { key: "LLM Agent", emphasize: false },
+      { key: "Generative AI", emphasize: true },
+      { key: "Large Language Model", emphasize: false },
       { key: "RAG", emphasize: false },
       { key: "LangChain", emphasize: true },
       { key: "Prompt Engineering", emphasize: false },
@@ -55,7 +57,7 @@ const TechStack: React.FC = () => {
   ]
 
   return (
-    <section className="flex relative m-8 flex-col gap-4 items-center">
+    <section className="flex relative p-8 flex-col gap-4 items-center bg-[#fef6dd]">
       <h2 className="text-lg text-center">Techstack</h2>
       <div className="max-w-full min-w-0 md:max-w-lg lg:max-w-3xl">
         <div className={styles.scroll_container}>
@@ -93,6 +95,10 @@ const TechStack: React.FC = () => {
             </ul>
           ))}
         </div>
+      </div>
+      <div className="absolute -top-8 right-4 w-24 flex md:right-8 lg:right-12">
+        <CoffeeCupHigh />
+        <CoffeeCup />
       </div>
     </section>
   )

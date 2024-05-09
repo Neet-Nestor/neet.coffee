@@ -28,8 +28,7 @@ const UnderConstruction: React.FC = () => {
         src="https://cdn.pixabay.com/photo/2017/06/16/07/26/under-construction-2408061_960_720.png"
       />
       <div className="text-lg mt-10 max-w-xl text-center">
-        Unfortunately, this site is still under construction due to the
-        owner&apos;s limited available time after work. Please check later!
+        This site is still under construction. Please check back later!
       </div>
     </section>
   )

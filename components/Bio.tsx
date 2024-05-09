@@ -168,7 +168,7 @@ const Bio: React.FC = () => {
             </h1>
             <p className="text-md">A Versatile Full-Stack Engineer</p>
             <p className="text-gray-500">
-              Crafting Web, Mobile, & AI Applications
+              Turning Coffee into Web, Mobile, & AI Applications
             </p>
           </div>
           <div className="flex flex-col mt-4 gap-2 w-32">
