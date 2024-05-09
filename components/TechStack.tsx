@@ -66,11 +66,11 @@ const TechStack: React.FC = () => {
               key={row_idx}
               className={`${styles.scroll_list} ${
                 row_idx % 2 == 1 ? styles.reverse : ""
-              } my-4`}
+              } my-4 flex items-center`}
             >
               {items.map(({ key, emphasize }, idx) => (
                 <React.Fragment key={idx}>
-                  <li className={styles.star}>
+                  <li className="w-4 h-4 shrink-0 select-none">
                     <Star />
                   </li>
                   <li className={emphasize ? "color-black" : "text-slate-500"}>
@@ -81,7 +81,7 @@ const TechStack: React.FC = () => {
               {/* Duplicate for seamless scrolling */}
               {items.map(({ key, emphasize }, idx) => (
                 <React.Fragment key={idx}>
-                  <li className={styles.star}>
+                  <li className="w-4 h-4 shrink-0 select-none">
                     <Star />
                   </li>
                   <li

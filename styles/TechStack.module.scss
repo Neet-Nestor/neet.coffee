@@ -1,20 +1,16 @@
 .scroll_container {
   width: 100%;
   overflow: hidden;
-  -webkit-mask: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgb(0, 0, 0) 16%,
-    rgb(0, 0, 0) 84%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  mask: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgb(0, 0, 0) 16%,
-    rgb(0, 0, 0) 84%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  -webkit-mask: linear-gradient(to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgb(0, 0, 0) 16%,
+      rgb(0, 0, 0) 84%,
+      rgba(0, 0, 0, 0) 100%);
+  mask: linear-gradient(to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgb(0, 0, 0) 16%,
+      rgb(0, 0, 0) 84%,
+      rgba(0, 0, 0, 0) 100%);
 
   .scroll_list {
     white-space: nowrap;
@@ -30,11 +26,6 @@
 
     &.reverse {
       animation-direction: reverse;
-    }
-
-    .star {
-      width: 1rem;
-      height: 1rem;
     }
   }
 }

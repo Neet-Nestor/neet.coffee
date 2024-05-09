@@ -38,7 +38,7 @@ const CoffeePaperCup: FC = () => (
     >
       <g id="g30" />
       <g id="g42">
-        <g clip-path="url(#clipPath34)" opacity="0.149994" id="g40">
+        <g clipPath="url(#clipPath34)" opacity="0.149994" id="g40">
           <g transform="translate(880.2693,666.3996)" id="g38">
             <path
               d="M 0,0 -7.687,-101.355 H 5.101 L 12.788,0 Z"
@@ -102,7 +102,7 @@ const CoffeePaperCup: FC = () => (
     >
       <g id="g74" />
       <g id="g84">
-        <g clip-path="url(#clipPath78)" opacity="0.149994" id="g82">
+        <g clipPath="url(#clipPath78)" opacity="0.149994" id="g82">
           <path
             d="m 885.433,666.247 h 12.888 v 13.681 h -12.888 z"
             fill="#000000"
@@ -146,7 +146,7 @@ const CoffeePaperCup: FC = () => (
     >
       <g id="g96" />
       <g id="g108">
-        <g clip-path="url(#clipPath100)" opacity="0.149994" id="g106">
+        <g clipPath="url(#clipPath100)" opacity="0.149994" id="g106">
           <g transform="translate(888.164,694.2162)" id="g104">
             <path
               d="m 0,0 h -12.788 l 4.762,-14.288 H 4.762 Z"

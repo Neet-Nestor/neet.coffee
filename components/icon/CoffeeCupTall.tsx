@@ -57,7 +57,7 @@ const CoffeeCupHigh: FC = () => (
     >
       <g id="g650" />
       <g id="g662">
-        <g clip-path="url(#clipPath654)" opacity="0.149994" id="g660">
+        <g clipPath="url(#clipPath654)" opacity="0.149994" id="g660">
           <g transform="translate(453.2168,661.6692)" id="g658">
             <path
               d="m 0,0 v -84.946 c 0,-6.069 -4.92,-10.988 -10.988,-10.988 H 1.8 c 6.069,0 10.988,4.919 10.988,10.988 V 0 Z"
@@ -103,7 +103,7 @@ const CoffeeCupHigh: FC = () => (
     >
       <g id="g674" />
       <g id="g686">
-        <g clip-path="url(#clipPath678)" opacity="0.149994" id="g684">
+        <g clipPath="url(#clipPath678)" opacity="0.149994" id="g684">
           <g transform="translate(466.0052,644.8094)" id="g682">
             <path
               d="m 0,0 v -10.032 c 16.508,0 17.422,-7.8 17.422,-17.421 0,-9.622 -7.8,-15.595 -17.422,-15.595 V -53.08 c 15.162,0 27.454,10.464 27.454,25.627 C 27.454,-12.291 24.425,0 0,0"
@@ -214,7 +214,7 @@ const CoffeeCupHigh: FC = () => (
     >
       <g id="g718" />
       <g id="g730">
-        <g clip-path="url(#clipPath722)" opacity="0.149994" id="g728">
+        <g clipPath="url(#clipPath722)" opacity="0.149994" id="g728">
           <g transform="translate(438.2067,624.2593)" id="g726">
             <path
               d="m 0,0 c -1.683,2.153 -3.68,3.855 -5.798,5.075 3.996,-6.731 3.538,-14.61 -1.425,-18.489 -3.854,-3.013 -9.397,-2.805 -14.289,0.013 0.451,-0.76 0.945,-1.509 1.51,-2.233 5.57,-7.127 14.564,-9.405 20.087,-5.087 C 5.609,-16.404 5.571,-7.127 0,0"
