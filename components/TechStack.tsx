@@ -92,6 +92,32 @@ const TechStack: React.FC = () => {
                   </li>
                 </React.Fragment>
               ))}
+              {items.map(({ key, emphasize }, idx) => (
+                <React.Fragment key={idx}>
+                  <li className="w-4 h-4 shrink-0 select-none">
+                    <Star />
+                  </li>
+                  <li
+                    aria-hidden="true"
+                    className={emphasize ? "color-black" : "text-slate-500"}
+                  >
+                    <p>{key}</p>
+                  </li>
+                </React.Fragment>
+              ))}
+              {items.map(({ key, emphasize }, idx) => (
+                <React.Fragment key={idx}>
+                  <li className="w-4 h-4 shrink-0 select-none">
+                    <Star />
+                  </li>
+                  <li
+                    aria-hidden="true"
+                    className={emphasize ? "color-black" : "text-slate-500"}
+                  >
+                    <p>{key}</p>
+                  </li>
+                </React.Fragment>
+              ))}
             </ul>
           ))}
         </div>
