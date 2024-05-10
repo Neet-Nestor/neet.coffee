@@ -3,6 +3,9 @@ import React, { useContext, useEffect, useState } from "react"
 import { WindowInnerSizeContext } from "./ResizeObserver"
 import styles from "../styles/Bio.module.scss"
 import GitHubIcon from "../public/images/github.png"
+import { CoffeePaperCup } from "./icon/CoffeePaperCup"
+
+const ANIMATION_END = 200
 
 const Arrow: React.FC = () => (
   <svg viewBox="0 0 70 40">
@@ -131,6 +134,28 @@ const Bio: React.FC = () => {
   const { innerHeight, innerWidth } = useContext(WindowInnerSizeContext)
   const [containerHeight, setContainerHeight] = useState(0)
 
+  const [translateX, setTranslateX] = useState(0)
+  const [translateY, setTranslateY] = useState(0)
+  const [rotate, setRotate] = useState(0)
+
+  const handleScroll = () => {
+    const position = window.scrollY
+
+    if (position < ANIMATION_END * 3.2) {
+      setTranslateX((4 * position) / ANIMATION_END)
+      setTranslateY((6 * position) / ANIMATION_END)
+      setRotate((90 * position) / ANIMATION_END)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
+
   useEffect(() => {
     // This is to fix the tab bar overlapping with `100vh` on mobile browsers
     setContainerHeight(window.innerHeight)
@@ -146,7 +171,7 @@ const Bio: React.FC = () => {
       <div className="relative w-full flex flex-col sm:my-4 justify-center grow items-center md:flex-row md:gap-14 lg:py-16">
         <div className="relative h-full max-h-48 opacity-90 my-4 min-w-min flex aspect-square sm:max-h-60 md:max-h-80 md:flex-none md:mx-0">
           <div
-            className={`absolute w-full h-full border-4 sm:border-8 border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.25)]`}
+            className="absolute relative w-full h-full border-4 sm:border-8 border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.25)]"
             aria-label="photo of Nestor Qin"
           >
             <Image
@@ -159,6 +184,14 @@ const Bio: React.FC = () => {
                 objectFit: "cover",
               }}
             />
+            <div
+              className="absolute w-8 right-6 top-24 sm:w-10 sm:right-8 sm:top-28 md:right-16 md:top-40 md:w-12"
+              style={{
+                transform: `translate(${translateX}rem, ${translateY}rem) rotate(${rotate}deg)`,
+              }}
+            >
+              <CoffeePaperCup />
+            </div>
           </div>
         </div>
         <div className="text-center flex flex-col items-center md:inline-block md:text-start">

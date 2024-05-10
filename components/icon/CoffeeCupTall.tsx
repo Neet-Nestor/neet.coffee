@@ -1,6 +1,6 @@
 import { FC } from "react"
 
-const CoffeeCupHigh: FC = () => (
+export const CoffeeCupHigh: FC = () => (
   <svg
     viewBox="516.8876 220.0894 144.7126 174.5849"
     xmlns="http://www.w3.org/2000/svg"
@@ -230,5 +230,3 @@ const CoffeeCupHigh: FC = () => (
     </g>
   </svg>
 )
-
-export default CoffeeCupHigh

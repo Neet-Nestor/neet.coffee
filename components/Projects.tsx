@@ -1,5 +1,5 @@
 import React from "react"
-import CoffeePot from "./icon/CoffeePot"
+import { CoffeePot } from "./icon/CoffeePot"
 
 const Projects: React.FC = () => {
   return (

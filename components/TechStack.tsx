@@ -1,8 +1,8 @@
 import React from "react"
-import Star from "./icon/Star"
 import styles from "../styles/TechStack.module.scss"
-import CoffeeCupHigh from "./icon/CoffeeCupTall"
-import CoffeeCup from "./icon/CoffeeCup"
+import { Star } from "./icon/Star"
+import { CoffeeCupHigh } from "./icon/CoffeeCupTall"
+import { CoffeeCup } from "./icon/CoffeeCup"
 
 const TechStack: React.FC = () => {
   const techstackItems = [
@@ -122,7 +122,7 @@ const TechStack: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="absolute -top-8 right-4 w-24 flex md:right-8 lg:right-12">
+      <div className="absolute -top-8 right-4 gap-2 w-[6.5rem] flex md:w-24 md:right-8 lg:right-12">
         <CoffeeCupHigh />
         <CoffeeCup />
       </div>

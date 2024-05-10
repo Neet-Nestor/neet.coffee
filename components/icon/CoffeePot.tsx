@@ -1,6 +1,6 @@
 import { FC } from "react"
 
-const CoffeePot: FC = () => (
+export const CoffeePot: FC = () => (
   <svg
     viewBox="1057.3563 517.6316 179.102 148.4545"
     width="179.102"
@@ -253,5 +253,3 @@ const CoffeePot: FC = () => (
     </g>
   </svg>
 )
-
-export default CoffeePot
