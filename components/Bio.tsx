@@ -140,8 +140,10 @@ const Bio: React.FC = () => {
 
   const handleScroll = () => {
     const position = window.scrollY
+    const isReduced = !!window.matchMedia(`(prefers-reduced-motion: reduce)`)
+      ?.matches
 
-    if (position < ANIMATION_END * 3.2) {
+    if (!isReduced && position < ANIMATION_END * 3.2) {
       setTranslateX((4 * position) / ANIMATION_END)
       setTranslateY((6 * position) / ANIMATION_END)
       setRotate((90 * position) / ANIMATION_END)
