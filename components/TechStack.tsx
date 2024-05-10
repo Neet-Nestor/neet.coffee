@@ -57,69 +57,76 @@ const TechStack: React.FC = () => {
   ]
 
   return (
-    <section className="flex relative p-8 flex-col gap-4 items-center bg-[#fef6dd]">
-      <h2 className="text-lg text-center">Techstack</h2>
-      <div className="max-w-full min-w-0 md:max-w-lg lg:max-w-3xl">
-        <div className={styles.scroll_container}>
-          {techstackItems.map((items, row_idx) => (
-            <ul
-              key={row_idx}
-              className={`${styles.scroll_list} ${
-                row_idx % 2 == 1 ? styles.reverse : ""
-              } my-4 flex items-center`}
-            >
-              {items.map(({ key, emphasize }, idx) => (
-                <React.Fragment key={idx}>
-                  <li className="w-4 h-4 shrink-0 select-none">
-                    <Star />
-                  </li>
-                  <li className={emphasize ? "color-black" : "text-slate-500"}>
-                    <p>{key}</p>
-                  </li>
-                </React.Fragment>
-              ))}
-              {/* Duplicate for seamless scrolling */}
-              {items.map(({ key, emphasize }, idx) => (
-                <React.Fragment key={idx}>
-                  <li className="w-4 h-4 shrink-0 select-none">
-                    <Star />
-                  </li>
-                  <li
-                    aria-hidden="true"
-                    className={emphasize ? "color-black" : "text-slate-500"}
-                  >
-                    <p>{key}</p>
-                  </li>
-                </React.Fragment>
-              ))}
-              {items.map(({ key, emphasize }, idx) => (
-                <React.Fragment key={idx}>
-                  <li className="w-4 h-4 shrink-0 select-none">
-                    <Star />
-                  </li>
-                  <li
-                    aria-hidden="true"
-                    className={emphasize ? "color-black" : "text-slate-500"}
-                  >
-                    <p>{key}</p>
-                  </li>
-                </React.Fragment>
-              ))}
-              {items.map(({ key, emphasize }, idx) => (
-                <React.Fragment key={idx}>
-                  <li className="w-4 h-4 shrink-0 select-none">
-                    <Star />
-                  </li>
-                  <li
-                    aria-hidden="true"
-                    className={emphasize ? "color-black" : "text-slate-500"}
-                  >
-                    <p>{key}</p>
-                  </li>
-                </React.Fragment>
-              ))}
-            </ul>
-          ))}
+    <section className="relative px-4 py-8 flex-col bg-[#fef6dd] sm:px-8">
+      <div className="w-fit mx-auto relative">
+        <h2 className="w-fit text-lg text-start relative mb-4">
+          Techstack
+          <span className="bg-[#FFCF7F] w-full h-1 absolute left-0 -bottom-[0.125rem]" />
+        </h2>
+        <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl">
+          <div className={styles.scroll_container}>
+            {techstackItems.map((items, row_idx) => (
+              <ul
+                key={row_idx}
+                className={`${styles.scroll_list} ${
+                  row_idx % 2 == 1 ? styles.reverse : ""
+                } my-4 flex items-center`}
+              >
+                {items.map(({ key, emphasize }, idx) => (
+                  <React.Fragment key={idx}>
+                    <li className="w-4 h-4 shrink-0 select-none">
+                      <Star />
+                    </li>
+                    <li
+                      className={emphasize ? "color-black" : "text-slate-500"}
+                    >
+                      <p>{key}</p>
+                    </li>
+                  </React.Fragment>
+                ))}
+                {/* Duplicate for seamless scrolling */}
+                {items.map(({ key, emphasize }, idx) => (
+                  <React.Fragment key={idx}>
+                    <li className="w-4 h-4 shrink-0 select-none">
+                      <Star />
+                    </li>
+                    <li
+                      aria-hidden="true"
+                      className={emphasize ? "color-black" : "text-slate-500"}
+                    >
+                      <p>{key}</p>
+                    </li>
+                  </React.Fragment>
+                ))}
+                {items.map(({ key, emphasize }, idx) => (
+                  <React.Fragment key={idx}>
+                    <li className="w-4 h-4 shrink-0 select-none">
+                      <Star />
+                    </li>
+                    <li
+                      aria-hidden="true"
+                      className={emphasize ? "color-black" : "text-slate-500"}
+                    >
+                      <p>{key}</p>
+                    </li>
+                  </React.Fragment>
+                ))}
+                {items.map(({ key, emphasize }, idx) => (
+                  <React.Fragment key={idx}>
+                    <li className="w-4 h-4 shrink-0 select-none">
+                      <Star />
+                    </li>
+                    <li
+                      aria-hidden="true"
+                      className={emphasize ? "color-black" : "text-slate-500"}
+                    >
+                      <p>{key}</p>
+                    </li>
+                  </React.Fragment>
+                ))}
+              </ul>
+            ))}
+          </div>
         </div>
       </div>
       <div className="absolute -top-8 right-4 gap-2 w-[6.5rem] flex md:w-24 md:right-8 lg:right-12">
