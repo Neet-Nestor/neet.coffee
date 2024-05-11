@@ -143,7 +143,7 @@ const Bio: React.FC = () => {
     const isReduced = !!window.matchMedia(`(prefers-reduced-motion: reduce)`)
       ?.matches
 
-    if (!isReduced && position < ANIMATION_END * 3.2) {
+    if (!isReduced) {
       setTranslateX((4 * position) / ANIMATION_END)
       setTranslateY((6 * position) / ANIMATION_END)
       setRotate((90 * position) / ANIMATION_END)
@@ -167,7 +167,9 @@ const Bio: React.FC = () => {
     <section
       className="py-[44px] relative flex mx-10 max-h-[60rem]"
       style={{
-        height: `calc(${containerHeight}px - env(safe-area-inset-bottom, 0px))`,
+        height: containerHeight
+          ? `calc(${containerHeight}px - env(safe-area-inset-bottom, 0px))`
+          : "100vh",
       }}
     >
       <div className="relative w-full flex flex-col sm:my-4 justify-center grow items-center md:flex-row md:gap-14 lg:py-16">
