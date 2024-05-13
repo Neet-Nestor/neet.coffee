@@ -3,6 +3,7 @@ import styles from "../styles/TechStack.module.scss"
 import { Star } from "./icon/Star"
 import { CoffeeCupHigh } from "./icon/CoffeeCupTall"
 import { CoffeeCup } from "./icon/CoffeeCup"
+import { MaxWidthContainer } from "./Utils"
 
 const TechStack: React.FC = () => {
   const techstackItems = [
@@ -58,12 +59,14 @@ const TechStack: React.FC = () => {
 
   return (
     <section className="relative px-2 py-8 xs:px-4 bg-coffee-100 sm:px-8">
-      <div className="w-fit mx-auto relative">
-        <h2 className="w-fit text-lg text-start relative mb-4">
-          Techstack
-          <span className="bg-coffee-400 w-full h-1 absolute left-0 -bottom-[0.125rem]" />
-        </h2>
-        <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl">
+      <div className="w-full relative">
+        <MaxWidthContainer>
+          <h2 className="w-fit text-lg text-start relative mb-4">
+            Techstack
+            <span className="bg-coffee-400 w-full h-1 absolute left-0 -bottom-[0.125rem]" />
+          </h2>
+        </MaxWidthContainer>
+        <MaxWidthContainer>
           <div className={styles.scroll_container}>
             {techstackItems.map((items, row_idx) => (
               <ul
@@ -127,7 +130,7 @@ const TechStack: React.FC = () => {
               </ul>
             ))}
           </div>
-        </div>
+        </MaxWidthContainer>
       </div>
       <div className="absolute -top-8 right-4 gap-2 w-[6.5rem] flex md:w-24 md:right-8 lg:right-12">
         <CoffeeCupHigh />

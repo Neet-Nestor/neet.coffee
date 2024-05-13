@@ -1,8 +1,15 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-export const LinkIcon = () => (
+import { Octokit } from "octokit"
+import { MaxWidthContainer } from "./Utils"
+
+const octokit = new Octokit({
+  auth: process.env.GITHUB_TOKEN,
+})
+
+const LinkIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 20 20"
@@ -18,17 +25,54 @@ export const LinkIcon = () => (
   </svg>
 )
 
+const StarIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    className="mr-1 h-3 w-3"
+    aria-hidden="true"
+  >
+    <path
+      fillRule="evenodd"
+      d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+      clipRule="evenodd"
+    ></path>
+  </svg>
+)
+
 interface Project {
   title: string
   description: string
   tags: string[]
   image: JSX.Element
-  star?: number
+  gh?: {
+    owner: string
+    repo: string
+  }
   link?: string
 }
 
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
-  const { title, description, tags, image, star, link } = project
+const ProjectCard: React.FC<{ project: Project; stars?: number }> = ({
+  project,
+}) => {
+  const { title, description, tags, image, gh, link } = project
+  const [stars, setStars] = useState<number | null>(null)
+  useEffect(() => {
+    if (!project.gh) return
+    const { owner, repo } = project.gh
+    octokit
+      .request("GET /repos/{owner}/{repo}", {
+        owner,
+        repo,
+        headers: {
+          "X-GitHub-Api-Version": "2022-11-28",
+        },
+      })
+      .then((res: { data: { stargazers_count: number } }) => {
+        setStars(res.data.stargazers_count)
+      })
+  }, [])
 
   return (
     <div className="group relative grid gap-4 pb-1 mb-12 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
@@ -37,6 +81,8 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           {link ? (
             <Link
               href={link}
+              target="_blank"
+              rel="noreferrer noopener"
               className="font-medium leading-tight hover:text-coffee-400 focus-visible:text-coffee-300 group/link text-base"
             >
               {title}
@@ -48,7 +94,17 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         </h3>
 
         <p className="text-sm text-gray-600 mt-2">{description}</p>
-        {star && <div></div>}
+        {gh && (
+          <Link
+            href={`https://github.com/${gh.owner}/${gh.repo}`}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-800 hover:text-coffee-400 focus-visible:text-teal-300"
+          >
+            <StarIcon />
+            {stars || "---"}
+          </Link>
+        )}
         <ul className="flex mt-2 flex-wrap">
           {tags.map((tag) => (
             <li className="mr-1.5 mt-2" key={tag}>
@@ -66,57 +122,65 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   )
 }
 
-const Projects: React.FC = () => {
-  const projects: Project[] = [
-    {
-      title: "Web-LLM Chat",
-      description:
-        "A chatbot webapp with AI language models directly running inside your browser.",
-      tags: ["Next.js", "React.js", "TypeScript", "JavaScript", "LLM"],
-      image: (
-        <Image
-          src="/images/projects/web-llm-chat.png"
-          alt="A chatbot webapp with AI language models directly running inside your browser."
-          width={2332}
-          height={1580}
-        />
-      ),
-      link: "https://chat.neet.coffee",
+const projects: Project[] = [
+  {
+    title: "Web-LLM Chat",
+    description:
+      "A chatbot webapp with AI language models directly running inside your browser.",
+    tags: ["Next.js", "React.js", "TypeScript", "JavaScript", "LLM"],
+    image: (
+      <Image
+        src="/images/projects/web-llm-chat.png"
+        alt="A chatbot webapp with AI language models directly running inside your browser."
+        width={2332}
+        height={1580}
+      />
+    ),
+    link: "https://chat.neet.coffee",
+    gh: {
+      owner: "mlc-ai",
+      repo: "web-llm",
     },
-    {
-      title: "Telegram Media Downloader",
-      description:
-        "A tool for downloading images, GIFs, and videos on Telegram webapp from private channels which disable downloading and restrict saving content.",
-      tags: ["JavaScript"],
-      image: (
-        <video width="2538" height="1782" loop autoPlay playsInline muted>
-          <source src="/videos/telegram-downloader.webm" type="video/webm" />
-          <source src="/videos/telegram-downloader.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      ),
-      link: "https://github.com/Neet-Nestor/Telegram-Media-Downloader",
+  },
+  {
+    title: "Telegram Media Downloader",
+    description:
+      "A tool for downloading images, GIFs, and videos on Telegram webapp from private channels which disable downloading and restrict saving content.",
+    tags: ["JavaScript"],
+    image: (
+      <video width="2538" height="1782" loop autoPlay playsInline muted>
+        <source src="/videos/telegram-downloader.webm" type="video/webm" />
+        <source src="/videos/telegram-downloader.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    ),
+    link: "https://github.com/Neet-Nestor/Telegram-Media-Downloader",
+    gh: {
+      owner: "Neet-Nestor",
+      repo: "Telegram-Media-Downloader",
     },
-    {
-      title: "Morphing World",
-      description:
-        "A platformer game combined with puzzle elements. You neet to collect world pieces and build up the map by yourself before you can escape!",
-      tags: ["Haxe", "Game Development"],
-      image: (
-        <Image
-          src="/images/projects/morphingworld.png"
-          alt="A chatbot webapp with AI language models directly running inside your browser."
-          width={2332}
-          height={1580}
-        />
-      ),
-      link: "https://gamejolt.com/games/Morphingworld/475838",
-    },
-  ]
+  },
+  {
+    title: "Morphing World",
+    description:
+      "A platformer game combined with puzzle elements. You neet to collect world pieces and build up the map by yourself before you can escape!",
+    tags: ["Haxe", "Game Development"],
+    image: (
+      <Image
+        src="/images/projects/morphingworld.png"
+        alt="A chatbot webapp with AI language models directly running inside your browser."
+        width={2332}
+        height={1580}
+      />
+    ),
+    link: "https://gamejolt.com/games/Morphingworld/475838",
+  },
+]
 
+const Projects = () => {
   return (
     <section className="px-4 py-8 sm:px-8">
-      <div className="max-w-xs mx-auto sm:max-w-md md:max-w-lg lg:max-w-3xl">
+      <MaxWidthContainer>
         <h2 className="w-fit mb-8 text-lg text-start relative">
           Projects
           <span className="bg-coffee-200 w-full h-1 absolute left-0 -bottom-[0.125rem]" />
@@ -124,7 +188,7 @@ const Projects: React.FC = () => {
         {projects.map((p) => (
           <ProjectCard project={p} key={p.title} />
         ))}
-      </div>
+      </MaxWidthContainer>
     </section>
   )
 }
