@@ -157,7 +157,7 @@ const Bio: React.FC = () => {
   return (
     <section className="py-[44px] relative flex mx-10 h-svh max-h-[60rem]">
       <div className="relative w-full flex flex-col sm:my-4 justify-center grow items-center md:flex-row md:gap-14 lg:py-16 xl:gap-24">
-        <div className="relative h-full max-h-48 opacity-90 my-4 min-w-min flex aspect-square sm:max-h-60 md:max-h-80 md:flex-none md:mx-0:">
+        <div className="relative h-full max-h-48 opacity-90 my-4 min-w-min flex aspect-square sm:max-h-60 md:max-h-72 md:flex-none md:mx-0:">
           <div
             className="absolute relative w-full h-full border-4 border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.25)]"
             aria-label="photo of Nestor Qin"
@@ -174,7 +174,7 @@ const Bio: React.FC = () => {
               }}
             />
             <div
-              className="absolute w-8 right-6 top-24 sm:w-8 sm:right-8 sm:top-32 md:right-16 md:top-40 md:w-12"
+              className="absolute w-8 right-6 top-24 sm:w-8 sm:right-8 sm:top-32 md:right-12 md:top-36 md:w-12"
               style={{
                 transform: `translate(${translateX}rem, ${translateY}rem) rotate(${rotate}deg)`,
               }}
