@@ -1,26 +1,9 @@
 import Image from "next/image"
-import React, { useContext, useEffect, useState } from "react"
-import { WindowInnerSizeContext } from "./ResizeObserver"
+import React from "react"
 
 const UnderConstruction: React.FC = () => {
-  const { innerWidth } = useContext(WindowInnerSizeContext)
-  const [containerHeight, setContainerHeight] = useState(0)
-
-  useEffect(() => {
-    // This is to fix the tab bar overlapping with `100vh` on mobile browsers
-    setContainerHeight(window.innerHeight)
-  }, [])
-
   return (
-    <section
-      className="flex justify-center items-center flex-col bg-yellow-100	py-12 px-8"
-      style={{
-        minHeight:
-          innerWidth >= 1024
-            ? "0"
-            : `calc(${containerHeight}px - env(safe-area-inset-bottom, 0px))`,
-      }}
-    >
+    <section className="flex justify-center items-center flex-col bg-yellow-100 h-svh py-12 px-8">
       <Image
         width={200}
         height={180}

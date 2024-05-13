@@ -72,7 +72,7 @@ const ProjectCard: React.FC<{ project: Project; stars?: number }> = ({
       .then((res: { data: { stargazers_count: number } }) => {
         setStars(res.data.stargazers_count)
       })
-  }, [])
+  }, [project.gh])
 
   return (
     <div className="group relative grid gap-4 pb-1 mb-12 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">

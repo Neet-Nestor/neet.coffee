@@ -1,6 +1,5 @@
 import Image from "next/image"
-import React, { useContext, useEffect, useState } from "react"
-import { WindowInnerSizeContext } from "./ResizeObserver"
+import React, { useEffect, useState } from "react"
 import styles from "../styles/Bio.module.scss"
 import GitHubIcon from "../public/images/github.png"
 import { CoffeePaperCup } from "./icon/CoffeePaperCup"
@@ -131,9 +130,6 @@ const FizzyButton: React.FC<{
 }
 
 const Bio: React.FC = () => {
-  const { innerHeight, innerWidth } = useContext(WindowInnerSizeContext)
-  const [containerHeight, setContainerHeight] = useState(0)
-
   const [translateX, setTranslateX] = useState(0)
   const [translateY, setTranslateY] = useState(0)
   const [rotate, setRotate] = useState(0)
@@ -158,20 +154,8 @@ const Bio: React.FC = () => {
     }
   }, [])
 
-  useEffect(() => {
-    // This is to fix the tab bar overlapping with `100vh` on mobile browsers
-    setContainerHeight(window.innerHeight)
-  }, [])
-
   return (
-    <section
-      className="py-[44px] relative flex mx-10 max-h-[60rem]"
-      style={{
-        height: containerHeight
-          ? `calc(${containerHeight}px - env(safe-area-inset-bottom, 0px))`
-          : "100vh",
-      }}
-    >
+    <section className="py-[44px] relative flex mx-10 h-svh max-h-[60rem]">
       <div className="relative w-full flex flex-col sm:my-4 justify-center grow items-center md:flex-row md:gap-14 lg:py-16 xl:gap-24">
         <div className="relative h-full max-h-48 opacity-90 my-4 min-w-min flex aspect-square sm:max-h-60 md:max-h-80 md:flex-none md:mx-0:">
           <div
@@ -238,13 +222,11 @@ const Bio: React.FC = () => {
           </div>
         </div>
       </div>
-      {innerHeight > 576 && (
-        <div className="absolute w-full bottom-0 md:bottom-8 lg:bottom-16">
-          <div className={`${styles.arrow} w-8 mx-auto sm:w-12`}>
-            <Arrow />
-          </div>
+      <div className="absolute w-full bottom-0 md:bottom-8 lg:bottom-16">
+        <div className={`${styles.arrow} w-8 mx-auto sm:w-12`}>
+          <Arrow />
         </div>
-      )}
+      </div>
     </section>
   )
 }

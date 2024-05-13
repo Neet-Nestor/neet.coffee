@@ -38,6 +38,9 @@ module.exports = {
         'espresso-400': '#8C4A3B',
         'espresso-500': '#262225',
       },
+      height: {
+        svh: ['100vh /* fallback for Opera, IE and etc. */', '100svh'],
+      }
     }
   },
   plugins: [],

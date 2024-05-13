@@ -5,11 +5,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>Nestor Qin, Full-Stack Engineer</title>
-        <meta
-          name="description"
-          content="Nestor Qin is a versatile full-stack engineer who turns coffee into innovative Web, Mobile, and AI Applications."
-        />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
