@@ -172,10 +172,10 @@ const Bio: React.FC = () => {
           : "100vh",
       }}
     >
-      <div className="relative w-full flex flex-col sm:my-4 justify-center grow items-center md:flex-row md:gap-14 lg:py-16">
-        <div className="relative h-full max-h-48 opacity-90 my-4 min-w-min flex aspect-square sm:max-h-60 md:max-h-80 md:flex-none md:mx-0">
+      <div className="relative w-full flex flex-col sm:my-4 justify-center grow items-center md:flex-row md:gap-14 lg:py-16 xl:gap-24">
+        <div className="relative h-full max-h-48 opacity-90 my-4 min-w-min flex aspect-square sm:max-h-60 md:max-h-80 md:flex-none md:mx-0:">
           <div
-            className="absolute relative w-full h-full border-4 sm:border-8 border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.25)]"
+            className="absolute relative w-full h-full border-4 border-white rounded-full shadow-[0_0_25px_0_rgba(0,0,0,0.25)]"
             aria-label="photo of Nestor Qin"
           >
             <Image
@@ -183,13 +183,14 @@ const Bio: React.FC = () => {
               alt="Avatar"
               className="rounded-full static" /* this is required for Safari to not overflow */
               fill
+              loading="eager"
               sizes="100vw"
               style={{
                 objectFit: "cover",
               }}
             />
             <div
-              className="absolute w-8 right-6 top-24 sm:w-10 sm:right-8 sm:top-28 md:right-16 md:top-40 md:w-12"
+              className="absolute w-8 right-6 top-24 sm:w-8 sm:right-8 sm:top-32 md:right-16 md:top-40 md:w-12"
               style={{
                 transform: `translate(${translateX}rem, ${translateY}rem) rotate(${rotate}deg)`,
               }}
@@ -200,11 +201,13 @@ const Bio: React.FC = () => {
         </div>
         <div className="text-center flex flex-col items-center md:inline-block md:text-start">
           <div className="flex flex-col items-center md:items-start">
-            <h1 className="text-2xl mb-2 sm:text-3xl sm:mb-4 leading-loose">
+            <h1 className="text-2xl sm:text-3xl sm:mb-4 leading-loose">
               Hi, I&apos;m <strong>Nestor Qin</strong>
             </h1>
-            <p className="text-md">A Versatile Full-Stack Engineer</p>
-            <p className="text-gray-500">
+            <p className="text-md sm:text-lg">
+              A Versatile Full-Stack Engineer
+            </p>
+            <p className="text-md sm:text-lg text-gray-600">
               Turning Coffee into Web, Mobile, & AI Applications
             </p>
           </div>

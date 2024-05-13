@@ -6,6 +6,7 @@ import TechStack from "../components/TechStack"
 import NavigationBar from "../components/NavigationBar"
 import UnderConstruction from "../components/UnderConstruction"
 import styles from "../styles/index.module.css"
+import Projects from "../components/Projects"
 
 const Home: NextPage = () => {
   return (
@@ -23,7 +24,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="relative min-w-[20rem] lg:min-h-screen lg:p-10">
+      <main className="relative min-w-[21rem] lg:min-h-screen lg:p-10">
         <div className={`${styles.background}`}></div>
         <div
           id="page-container"
@@ -32,7 +33,8 @@ const Home: NextPage = () => {
           <NavigationBar />
           <Bio />
           <TechStack />
-          <UnderConstruction />
+          <Projects />
+          {/* <UnderConstruction /> */}
         </div>
       </main>
 

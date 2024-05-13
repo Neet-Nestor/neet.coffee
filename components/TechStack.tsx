@@ -57,11 +57,11 @@ const TechStack: React.FC = () => {
   ]
 
   return (
-    <section className="relative px-4 py-8 flex-col bg-[#fef6dd] sm:px-8">
+    <section className="relative px-2 py-8 xs:px-4 bg-coffee-100 sm:px-8">
       <div className="w-fit mx-auto relative">
         <h2 className="w-fit text-lg text-start relative mb-4">
           Techstack
-          <span className="bg-[#FFCF7F] w-full h-1 absolute left-0 -bottom-[0.125rem]" />
+          <span className="bg-coffee-400 w-full h-1 absolute left-0 -bottom-[0.125rem]" />
         </h2>
         <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl">
           <div className={styles.scroll_container}>
