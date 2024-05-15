@@ -1,5 +1,5 @@
 import Image from "next/image"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import styles from "../styles/Bio.module.scss"
 import GitHubIcon from "../public/images/github.png"
 import { CoffeePaperCup } from "./icon/CoffeePaperCup"
@@ -134,6 +134,8 @@ const Bio: React.FC = () => {
   const [translateY, setTranslateY] = useState(0)
   const [rotate, setRotate] = useState(0)
 
+  const resumeURL = useMemo(() => process.env.RESUME_URL, [])
+
   const handleScroll = () => {
     const position = window.scrollY
     const isReduced = !!window.matchMedia(`(prefers-reduced-motion: reduce)`)
@@ -198,7 +200,7 @@ const Bio: React.FC = () => {
           <div className="flex flex-col mt-4 gap-2 w-32">
             <FizzyButton
               icon={<DownloadIcon />}
-              href="https://www.dropbox.com/scl/fi/gg6p5byqnfd7zngiugddp/Nestor_Qin_Resume.pdf?rlkey=cjhk0bbaagklikxtkucjsk9lh&dl=1"
+              href={resumeURL}
               aria-label="Download Resume"
             />
             <LinkButton
