@@ -1,9 +1,20 @@
-import { Html, Head, Main, NextScript } from "next/document"
+import { GoogleAnalytics } from "@next/third-parties/google"
+import { Analytics } from "@vercel/analytics/react"
+import Head from "next/head"
 
-export default function Document() {
+import "./styles/globals.scss"
+
+type Props = {
+  children: React.ReactNode
+}
+
+const RootLayout = ({ children }: Props) => {
+  console.log("layout", process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID)
   return (
-    <Html lang="en">
+    <html lang="en">
       <Head>
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#f2e2ce" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -43,21 +54,16 @@ export default function Document() {
         />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d9a577" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#f2e2ce" />
       </Head>
       <body>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-KJJ2D43"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
-        <Main />
-        <NextScript />
+        {children}
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
+        )}
+        <Analytics />
       </body>
-    </Html>
+    </html>
   )
 }
+
+export default RootLayout

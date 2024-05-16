@@ -1,7 +1,9 @@
+"use client"
+
 import Image from "next/image"
 import React, { useEffect, useMemo, useState } from "react"
 import styles from "../styles/Bio.module.scss"
-import GitHubIcon from "../public/images/github.png"
+import GitHubIcon from "../../public/images/github.png"
 import { CoffeePaperCup } from "./icon/CoffeePaperCup"
 
 const ANIMATION_END = 200
@@ -134,7 +136,7 @@ const Bio: React.FC = () => {
   const [translateY, setTranslateY] = useState(0)
   const [rotate, setRotate] = useState(0)
 
-  const resumeURL = useMemo(() => process.env.RESUME_URL, [])
+  const resumeURL = useMemo(() => process.env.NEXT_PUBLIC_RESUME_URL, [])
 
   const handleScroll = () => {
     const position = window.scrollY
