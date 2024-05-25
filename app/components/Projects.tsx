@@ -126,9 +126,9 @@ const ProjectCard: React.FC<{ project: Project; stars?: number }> = ({
 
 const projects: Project[] = [
   {
-    title: "Web-LLM Chat",
+    title: "WebLLM Chat",
     description:
-      "A chatbot webapp with AI language models directly running inside your browser.",
+      "A chatbot web application that runs large language models natively in your browser, utilizing WebGPU for enhanced performance.",
     tags: ["Next.js", "React.js", "TypeScript", "JavaScript", "LLM"],
     image: (
       <Image
@@ -138,7 +138,7 @@ const projects: Project[] = [
         height={1580}
       />
     ),
-    link: "https://chat.neet.coffee",
+    link: "https://webllm.mlc.ai",
     gh: {
       owner: "mlc-ai",
       repo: "web-llm",
