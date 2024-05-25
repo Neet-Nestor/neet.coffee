@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -51,7 +51,7 @@ interface Project {
   gh?: {
     owner: string
     repo: string
-  }
+  }[]
   link?: string
 }
 
@@ -59,22 +59,25 @@ const ProjectCard: React.FC<{ project: Project; stars?: number }> = ({
   project,
 }) => {
   const { title, description, tags, image, gh, link } = project
-  const [stars, setStars] = useState<number | null>(null)
+  const [stars, setStars] = useState(new Map())
   useEffect(() => {
     if (!project.gh) return
-    const { owner, repo } = project.gh
-    octokit
-      .request("GET /repos/{owner}/{repo}", {
-        owner,
-        repo,
-        headers: {
-          "X-GitHub-Api-Version": "2022-11-28",
-        },
-      })
-      .then((res: { data: { stargazers_count: number } }) => {
-        setStars(res.data.stargazers_count)
-      })
+    project.gh.forEach(({ owner, repo }) => {
+      octokit
+        .request("GET /repos/{owner}/{repo}", {
+          owner,
+          repo,
+          headers: {
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
+        })
+        .then((res: { data: { stargazers_count: number } }) => {
+          stars.set(`${owner}/${repo}`, res.data.stargazers_count)
+          setStars(new Map(stars))
+        })
+    })
   }, [project.gh])
+  const nFormat = new Intl.NumberFormat()
 
   return (
     <div className="group relative grid gap-4 pb-1 mb-12 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
@@ -97,15 +100,22 @@ const ProjectCard: React.FC<{ project: Project; stars?: number }> = ({
 
         <p className="text-sm text-gray-600 mt-2">{description}</p>
         {gh && (
-          <Link
-            href={`https://github.com/${gh.owner}/${gh.repo}`}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-800 hover:text-coffee-400 focus-visible:text-teal-300"
-          >
-            <StarIcon />
-            {stars || "---"}
-          </Link>
+          <div className="flex gap-4">
+            {gh.map(({ owner, repo }, i) => (
+              <Link
+                key={`${owner}/${repo}`}
+                href={`https://github.com/${owner}/${repo}`}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-800 hover:text-coffee-400 focus-visible:text-teal-300"
+              >
+                <StarIcon />
+                {stars.has(`${owner}/${repo}`)
+                  ? nFormat.format(stars.get(`${owner}/${repo}`))
+                  : "---"}
+              </Link>
+            ))}
+          </div>
         )}
         <ul className="flex mt-2 flex-wrap">
           {tags.map((tag) => (
@@ -139,10 +149,16 @@ const projects: Project[] = [
       />
     ),
     link: "https://webllm.mlc.ai",
-    gh: {
-      owner: "mlc-ai",
-      repo: "web-llm",
-    },
+    gh: [
+      {
+        owner: "mlc-ai",
+        repo: "web-llm",
+      },
+      {
+        owner: "mlc-ai",
+        repo: "web-llm-chat",
+      },
+    ],
   },
   {
     title: "Telegram Media Downloader",
@@ -157,10 +173,12 @@ const projects: Project[] = [
       </video>
     ),
     link: "https://github.com/Neet-Nestor/Telegram-Media-Downloader",
-    gh: {
-      owner: "Neet-Nestor",
-      repo: "Telegram-Media-Downloader",
-    },
+    gh: [
+      {
+        owner: "Neet-Nestor",
+        repo: "Telegram-Media-Downloader",
+      },
+    ],
   },
   {
     title: "Morphing World",
