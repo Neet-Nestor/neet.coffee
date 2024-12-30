@@ -33,6 +33,23 @@ const Arrow: React.FC = () => (
   </svg>
 )
 
+const GoogleScholarIcon: React.FC = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    width="1.3rem"
+    height="1.3rem"
+  >
+    <path fill="#4285f4" d="M256 411.12L0 202.667 256 0z" />
+    <path fill="#356ac3" d="M256 411.12l256-208.453L256 0z" />
+    <circle fill="#a0c3ff" cx="256" cy="362.667" r="149.333" />
+    <path
+      fill="#76a7fa"
+      d="M121.037 298.667c23.968-50.453 75.392-85.334 134.963-85.334s110.995 34.881 134.963 85.334H121.037z"
+    />
+  </svg>
+)
+
 const LinkedInIcon: React.FC = () => (
   <svg
     height="24"
@@ -85,7 +102,7 @@ const LinkButton: React.FC<{
       target="_blank"
       rel="noreferrer"
       role="button"
-      className={`border-2 rounded text-base flex flex-row ${className} border-slate-600 px-4 py-2 w-full`}
+      className={`border-2 rounded text-base flex justify-evenly items-center flex-row ${className} border-slate-600 px-4 py-2 w-full`}
       {...otherProps}
     >
       {icon}
@@ -193,36 +210,46 @@ const Bio: React.FC = () => {
               Hi, I&apos;m <strong>Nestor Qin</strong>
             </h1>
             <p className="text-md sm:text-lg">
-              A Versatile Full-Stack Engineer
+              A Full-stack AI Software Engineer
             </p>
             <p className="text-md sm:text-lg text-gray-600">
               Turning Coffee into Web, Mobile, & AI Applications
             </p>
           </div>
-          <div className="flex flex-col mt-4 gap-2 w-32">
-            <FizzyButton
-              icon={<DownloadIcon />}
-              href={resumeURL}
-              aria-label="Download Resume"
-            />
-            <LinkButton
-              icon={
-                <div
-                  className={`w-6 h-6 bg-white rounded-full ${styles.icon} relative`}
-                >
-                  <Image src={GitHubIcon} alt="GitHub" fill sizes="100vw" />
-                </div>
-              }
-              className="bg-black text-white"
-              text="GitHub"
-              href="https://github.com/Neet-Nestor"
-            />
-            <LinkButton
-              icon={<LinkedInIcon />}
-              className="bg-[#007EBB] text-white"
-              text="LinkedIn"
-              href="https://www.linkedin.com/in/nestor-qin/"
-            />
+          <div className="flex flex-col mt-4 gap-2 w-32 md:w-fit">
+            <div className="flex flex-col gap-2 md:flex-row md:w-64">
+              <FizzyButton
+                icon={<DownloadIcon />}
+                href={resumeURL}
+                aria-label="Download Resume"
+              />
+              <LinkButton
+                icon={<GoogleScholarIcon />}
+                className="bg-white text-slate-600"
+                text="Scholar"
+                href="https://scholar.google.com/citations?user=CqavBhQAAAAJ"
+              />
+            </div>
+            <div className="flex flex-col gap-2 md:flex-row md:w-64">
+              <LinkButton
+                icon={
+                  <div
+                    className={`w-6 h-6 bg-white rounded-full ${styles.icon} relative`}
+                  >
+                    <Image src={GitHubIcon} alt="GitHub" fill sizes="100vw" />
+                  </div>
+                }
+                className="bg-black text-white"
+                text="GitHub"
+                href="https://github.com/Neet-Nestor"
+              />
+              <LinkButton
+                icon={<LinkedInIcon />}
+                className="bg-[#007EBB] text-white"
+                text="LinkedIn"
+                href="https://www.linkedin.com/in/nestor-qin/"
+              />
+            </div>
           </div>
         </div>
       </div>
